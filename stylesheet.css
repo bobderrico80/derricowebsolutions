@@ -1,0 +1,67 @@
+body {
+	margin:0px;
+	font-family:"Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+}
+
+#wrapper {
+	width:800px;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+#header {
+	background-color:#ffcccc;
+	height:200px;
+}
+
+#navBarContainer {
+	background-color:#ccffcc;
+	height:35px;
+}
+
+#navbar {
+	height:35px;
+	width:100%;
+}
+
+#navbar ul {
+	list-style:none;
+	margin:0px;
+	padding:0px;
+}
+
+#navbar li {
+	display:block;
+	float:left;
+	background-color:#ccffff;
+	margin-left:2px;
+	margin-right:2px;
+	padding-left:2px;
+	padding-right:2px;
+	height:35px;
+	width:193px;
+	text-align:center;
+	line-height:35px;
+}
+
+#navbar li.left {
+	margin-left:0px;
+}
+
+#navbar li.right {
+	margin-right:0px;
+}
+
+#navbar a {
+	text-decoration:none;
+}
+
+#content {
+	background-color:#ccccff;
+	height:800px;
+}
+
+#footer {
+	background-color:#ffffcc;
+	height:35px;
+}
