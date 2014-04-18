@@ -10,6 +10,22 @@ img.articleInset {
 	margin-bottom:20px;
 }
 
+a {
+	text-decoration:none;
+}
+
+a:link {
+	color:#1F409B;
+}
+
+a:visited {
+	color:#1F409B;
+}
+
+a:hover {
+	text-decoration:underline;
+}
+
 #wrapper {
 	width:800px;
 	margin-left:auto;
@@ -114,20 +130,103 @@ img.articleInset {
 	padding-top:0px;
 }
 
-#ssContainer {
+#galContainer {
 	width:600px;
-	height:600px;
+	height:700px;
 	border:1px solid #1F409B;
 	margin-left:auto;
 	margin-right:auto;
 }
 
-#ssDisplay {
+#galDisplay {
 	width:100%;
 	margin:0px;
 	padding:0px;
-	height:475px;
+	height:575px;
 	border-bottom:1px solid #1F409B;
+	text-align:center;
+}
+
+#galImage {
+	height:350px;
+}
+
+#galImage:hover {
+	outline: 1px solid #7392E6;
+}
+
+#galTitle {
+	margin-top:0px;
+	margin-bottom:10px;
+}
+
+#galURL {
+	margin-top:5px;
+	font-size:1.5em;
+	margin-bottom:5px;
+}
+
+#galDesc {
+	margin-left:20px;
+	margin-right:20px;
+	margin-top:5px;
+}
+
+#galControl {
+	width:100%;
+	margin:0px;
+	padding:0px;
+	height:125px;
+	position:relative;
+}
+
+#galScrollLeft {
+	width:20px;
+	height:125px;
+	margin:0px;
+	position:absolute;
+	text-align:center;
+	font-size:2em;
+	line-height:115px;
+}
+
+.scroller:hover {
+	color:white;
+	background-color:#7392E6;
+}
+
+#galThumbs {
+	width:550px;
+	margin:0px;
+	height:125px;
+	position:absolute;
+	left:25px;
+	text-align:center;
+}
+
+#galThumbs img {
+	height:115px;
+	margin-top:5px;
+	opacity:0.5;
+}
+
+#galThumbs img:hover {
+	outline: 1px solid #7392E6;
+}
+
+#galThumbs img.selected {
+	opacity:1;
+}
+
+#galScrollRight {
+	width:20px;
+	height:125px;
+	margin:0px;
+	position:absolute;
+	left:580px;
+	text-align:center;
+	font-size:2em;
+	line-height:115px;
 }
 
 #footer {
