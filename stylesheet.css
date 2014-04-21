@@ -182,17 +182,19 @@ a:hover {
 
 #galScrollLeft {
 	width:20px;
-	height:125px;
+	height:124px;
 	margin:0px;
 	position:absolute;
 	text-align:center;
-	font-size:2em;
+	font-size:1.5em;
 	line-height:115px;
+	background-color:#E8EEFF;
+	border:0px;
+	outline:0px;
 }
 
-.scroller:hover {
+button.scroller:hover {
 	color:white;
-	background-color:#7392E6;
 }
 
 #galThumbs {
@@ -200,29 +202,40 @@ a:hover {
 	margin:0px;
 	height:125px;
 	position:absolute;
-	left:25px;
 	text-align:center;
+	left:25px;
+	overflow:hidden;
 }
 
 #galThumbs img {
 	height:115px;
 	margin-top:5px;
 	opacity:0.5;
+	position:relative;
 }
 
 #galThumbs img:hover {
 	outline: 1px solid #7392E6;
 }
 
+#galThumbSlider {
+	position:relative;
+	display:inline-block;
+	white-space:nowrap;
+}
+
 #galScrollRight {
 	width:20px;
-	height:125px;
+	height:124px;
 	margin:0px;
 	position:absolute;
 	left:580px;
 	text-align:center;
-	font-size:2em;
+	font-size:1.5em;
 	line-height:115px;
+	background-color:#E8EEFF;
+	border:0px;
+	outline:0px;
 }
 
 #footer {

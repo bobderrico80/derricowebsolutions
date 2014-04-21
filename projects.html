@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Derrico Web Design - Custom Websites for Small Businesses, Organizations, and Individuals</title>
+		<title>D'Errico Web Design - Custom Websites for Small Businesses, Organizations, and Individuals</title>
 		
 		<link rel="stylesheet" type="text/css" href="stylesheet.css"/>
 		
@@ -23,14 +23,11 @@
 			function load(thumbId) {
 				
 				//resets opacity to 0.5 on all thumbnails
-				var thumbs = document.getElementsByClassName("thumb")
-				for (var i=0; i < thumbs.length; i++) {
-					thumbs[i].style.opacity="0.5";
-				}
+				$(".thumb").css("opacity","0.5");
 				
 				//sets opacity to 1 for the selected thumbnail
-				document.getElementById("tid" + thumbId).style.opacity="1";
-				
+				$("#tid" + thumbId).css("opacity","1");
+	
 				//selects the correct site object based on the thumbnail clicked
 				switch (thumbId) {
 					case 0:
@@ -45,12 +42,11 @@
 				}
 				
 				//reads data from the site object and inserts into html
-				document.getElementById("galTitle").innerHTML = site.title;
-				document.getElementById("galImageLink").href = site.url;
-				document.getElementById("galImage").src = site.imgurl;
-				document.getElementById("galURL").href = site.url;
-				document.getElementById("galURL").innerHTML = site.dispurl;
-				document.getElementById("galDesc").innerHTML = site.desc;
+				$("#galTitle").text(site.title);
+				$("#galImageLink").attr("href",site.url);
+				$("#galImage").attr("src",site.imgurl);
+				$("#galURL").attr("href",site.url).text(site.dispurl);
+				$("#galDesc").text(site.desc);
 			}
 			
 			//sets site objects
@@ -76,6 +72,26 @@
 				"img/laura.png",
 				"This site is an information hub for a high school language arts teacher.");
 			
+			//jquery functions for scrolling the thumbnails
+			$(document).ready(function() {
+				
+				//computes limit for scrolling thumbs
+				var limit = $("#galThumbSlider").width() - 550;
+				var offset = 0; //change in movement of the thumb slider
+				
+				$("#galScrollLeft").click(function() {
+					if (offset > 0) {
+						$("#galThumbSlider").animate({left:'+=160px'});
+						offset -= 160;
+					}
+				});
+				$("#galScrollRight").click(function() {
+					if (offset < limit) {
+						$("#galThumbSlider").animate({left:'-=160px'});
+						offset += 160;
+					}
+				});
+			});
 			
 		</script>
 		
@@ -112,20 +128,26 @@
 						</p>
 					</div>
 					<div id="galControl">
-						<div id="galScrollLeft" class="scroller"><
-						</div>
+						<button type="button" id="galScrollLeft" class="scroller"><
+						</button>
 						<div id="galThumbs">
-							<img onclick="load(0)" id="tid0" class="thumb" src="img/rrand.png"/>
-							<img onclick="load(1)" id="tid1" class="thumb" src="img/bth.png"/>
-							<img onclick="load(2)" id="tid2" class="thumb" src="img/laura.png"/>
+							<div id="galThumbSlider">
+								<img onclick="load(0)" id="tid0" class="thumb" src="img/rrand.png"/>
+								<img onclick="load(1)" id="tid1" class="thumb" src="img/bth.png"/>
+								<img onclick="load(2)" id="tid2" class="thumb" src="img/laura.png"/>
+								<img src="img/placeholder.png"/>
+								<img src="img/placeholder.png"/>
+								<img src="img/placeholder.png"/>
+								<img src="img/placeholder.png"/>
+							</div>
 						</div>
-						<div id="galScrollRight" class="scroller">>
-						</div>
+						<button type="button" id="galScrollRight" class="scroller">>
+						</button>
 					</div>
 				</div>
 			</div>
 			<div id="footer">
-				<p>Copyright &copy 2014 Derrico Web Design</p>
+				<p>Copyright &copy 2014 D'Errico Web Design</p>
 			</div>
 		</div>
 		

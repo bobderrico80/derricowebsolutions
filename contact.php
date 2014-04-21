@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Derrico Web Design - Custom Websites for Small Businesses, Organizations, and Individuals</title>
+		<title>D'Errico Web Design - Custom Websites for Small Businesses, Organizations, and Individuals</title>
 		<link rel="stylesheet" type="text/css" href="stylesheet.css"/>
 	</head>
 	<body>
@@ -25,7 +25,7 @@
 			<div id="content">
 			</div>
 			<div id="footer">
-				<p>Copyright &copy 2014 Derrico Web Design</p>
+				<p>Copyright &copy 2014 D'Errico Web Design</p>
 			</div>
 		</div>
 	</body>
