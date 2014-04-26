@@ -238,6 +238,33 @@ button.scroller:hover {
 	outline:0px;
 }
 
+span.spaced {
+	width:115px;
+	display:inline-block;
+	text-align:right;
+	margin-right:5px;
+}
+
+.required {
+	color:red;
+	font-size:.8em;
+}
+
+p.required {
+	margin-top:0px;
+	margin-bottom:34px;
+}
+
+h1.noBottomMargin {
+	margin-bottom:0px;
+}
+
+input[type=text] {
+	width:400px;
+	margin-left:5px;
+	margin-right:5px;
+}
+
 #footer {
 	background-color:#1F409B;
 	height:35px;
