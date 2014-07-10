@@ -124,7 +124,7 @@ img.linkIcon {
 
 #thumbGrid img {
     width:200px;
-    height:100%px;
+    height:100%;
     vertical-align:middle;
     display:inline-block;
     margin:10px;
@@ -136,13 +136,15 @@ img.linkIcon {
 
 #projDisplay {
     height:400px;
+    top:50px;
     width:430px;
+    left:700px;
     margin-left:50px;
     display:none;
     vertical-align:middle;
     white-space:normal;
     text-align:center;
-    float:right
+    position:absolute;
 }
 
 #projDisplay p, h2 {
