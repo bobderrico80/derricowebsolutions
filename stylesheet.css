@@ -124,7 +124,7 @@ img.linkIcon {
 
 #thumbGrid img {
     width:200px;
-    height:100%;
+    height:100%px;
     vertical-align:middle;
     display:inline-block;
     margin:10px;
@@ -191,6 +191,58 @@ img.linkIcon {
 
 #contentContact {
     display:none;
+}
+
+#contentContact label {
+    width:125px;
+    display:inline-block;
+    text-align:right;
+    margin-right:10px;
+}
+
+#contentContact input[type="text"], textarea, input[type="button"] {
+    background-color:#021A33;
+    border:1px solid #055DBA;
+    color:white;
+    font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
+    
+}
+
+#contentContact input[type="text"]:hover, input[type="button"]:hover, textarea:hover {
+    border:1px solid white
+}
+#contentContact input[type="text"]:focus, input[type="button"]:focus, textarea:focus {
+    border:1px solid white;
+    outline:0px;
+}
+
+#contentContact input[type="text"] {
+    width:400px;
+    display:inline-block;
+    margin-bottom:5px;
+    margin-top:5px
+}
+
+#contentContact textarea {
+    width:660px;
+    height:260px;
+    font-size:.9em;
+}
+
+#contentContact input[type="button"] {
+    font-size:1em;
+    padding-left:10px;
+    padding-right:10px;
+}
+
+#buttonContainer {
+    width:660px;
+    margin:7px;
+    text-align:right;
+}
+
+#contentContact input[type="button"] {
+    
 }
 
 #footer {

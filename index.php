@@ -111,7 +111,16 @@
             <!--Contact Section-->
             <div id="contentContact" class="pageSection">
                 <h1>Contact</h1>
-                <h2>E-Mail Me: <a href="mailto:bob@derricowebdesign.com">bob@derricowebdesign.com</a>
+                <div id="contactForm">
+                    <label for="name">Name:</label><input type="text" id="name" name="name"/><span class="warning" id="nameWarning">Required</span><br>
+                    <label for="email">E-Mail Address:</label><input type="text" id="email" name="email"/><span class="warning" id="emailWarning">Required</span><br>
+                    <label for="subject">Subject:</label><input type="text" id="subject" name="subject"/><br>
+                    <label for="body">Compose your message below:</label><br>
+                    <textarea name="body" id="body"></textarea><br>
+                    <div id="buttonContainer">
+                        <input type="button" id="submit" value="Send Email"/>
+                    </div>
+                </div>
             </div>
         </div>
         <div id="footer">
