@@ -54,6 +54,7 @@
             <div id="contentProjects" class="pageSection">
                 <div id="thumbGrid">
                     <h1>Projects</h1>
+                    <p>Click on an image below to view more information about each project.</p>
                     <img src="thumbs/rrand.png" id="1" alt="The Rhythm Randomizer" class="projGal"/>
                     <img src="thumbs/whsmb.png" id="2" alt="WHS Marching Band Practice Page" class="projGal"/>
                     <img src="thumbs/pbass.png" id="3" alt="Project Bass" class="projGal"/>
@@ -88,24 +89,45 @@
             <!--About Section-->
             <div id="contentAbout" class="pageSection">
                 <h1>About</h1>
-                <img src="img/me.jpg" id="myPic" alt="Picture of Bob D'Errico"/>
-                <p>My name is Bob D'Errico.  I currently am a music teacher, and 
-                    have been doing so for the last 10 years.  During my time 
-                    teaching, I have always sought to include educational technology 
-                    into my lesson plans.  This sometimes left me with a desire for 
-                    technological tools that did not exist.  The desire inspired
-                    me to create my first web app, the <a href="http://www.rhythmrandomizer.com" target="_blank">
-                    Rhythm Randomizer</a>, an app that generates rhythms randomly.</p>
-                <p>I found the need for a tool that did not exist, and began to 
-                    research how to build what I needed.  This simple HTML/Javascript
-                    app provided a springboard into the world of web design.  I 
-                    soon began to build other pages and tools, all of which can 
-                    be found on my <span class="pseudoLink" id="projectsLink">Projects</span>
-                     page.  I would be interested in further honing my skills by developing
-                    a site for you.  If you are willing to work with someone who 
-                    is dedicated, a self-learner, detail-oriented, and believes that 
-                    anything is possible, please <span class="pseudoLink" id="contactLink">contact 
-                    me</span> to get started on building your website.
+                <div class="figure">
+                    <img src="img/me.jpg" id="myPic" alt="Picture of Bob D'Errico"/>
+                    <p><strong>Bob D'Errico</strong><br>
+                        Web Designer/Developer
+                    </p>
+                </div>
+                <p>
+                    Bob D'Errico is a web designer/developer from suburban Philadelphia.  
+                    His expertise lies in creating concise and impressive websites for 
+                    businesses, non-profits, organizations, and school groups.  
+                    His experience in the education field as a band and choral director 
+                    gives him special insight into the needs of these clients.  
+                </p>
+                <p>
+                    Bob can also create web apps for specific needs; his 
+                    <a href="http://www.rhythmrandomizer.com" target="_blank">Rhythm Randomizer</a> 
+                    web app gives music educators a quick and easy way to generate 
+                    an infinite number of rhythm drills for their students. This 
+                    site is currently free! He recently developed a <a href="http://whsmb.derricowebdesign.com" target="_blank">web app</a> 
+                    that allows band students to access their music from home, including 
+                    midi play-along files and specific instrumentation set-up. Bob 
+                    can create other web sites and apps, tailored to your organization's 
+                    specific needs. 
+                </p>
+                <p>
+                    <strong>At this time, in addition to regular business website design, 
+                    Bob is taking a limited number of non-profit or school clients 
+                    to help them grow - free of charge! <span class="pseudoLink contactLink">Contact him</span>
+                    for details!</strong>
+                </p>
+                <p>
+                    When he is not working with web design, Bob enjoys working with 
+                    music-recording technology, cooking, and spending time with 
+                    his wife, and two daughters. 
+                </p>
+                <p>
+                    Contact <span class="pseudoLink contactLink">Bob D'Errico</span> 
+                    here to start improving your group's presence and accessibility online. 
+                </p>
             </div>
             
             <!--Contact Section-->
@@ -189,12 +211,8 @@
                 changeDiv($("#contentContact"));
             });
             
-            $("#contactLink").click(function(){
+            $(".contactLink").click(function(){
                 changeDiv($("#contentContact"));
-            });
-            
-            $("#projectsLink").click(function(){
-                changeDiv($("#contentProjects"));
             });
             
             //Event listener for project gallery    
@@ -218,11 +236,7 @@
                         $("#projDisplay").html(response);
                     }
                 });
-            });
-            
-            
-            
-            
+            });            
         </script>
     </body>
 </html>

@@ -124,7 +124,7 @@ img.linkIcon {
 
 #thumbGrid img {
     width:200px;
-    height:100%px;
+    height:100px;
     vertical-align:middle;
     display:inline-block;
     margin:10px;
@@ -171,6 +171,7 @@ img.linkIcon {
 #contentAbout {
     display:none;
     white-space:normal;
+    font-size:.9em;
 }
 
 .pseudoLink {
@@ -182,11 +183,24 @@ img.linkIcon {
     text-decoration:underline;
 }
 
-#myPic {
+.figure {
     float:left;
     display:block;
+    width:220px;
+    margin-top:18px;
+    margin-right:10px;
+    margin-bottom:20px;
+    text-align:center;
+}
+
+.figure img {
     width:200px;
-    margin:15px;
+}
+
+.figure p {
+    margin:0px;
+    text-align:center;
+    font-size:.8em;
 }
 
 #contentContact {
@@ -211,6 +225,7 @@ img.linkIcon {
 #contentContact input[type="text"]:hover, input[type="button"]:hover, textarea:hover {
     border:1px solid white
 }
+
 #contentContact input[type="text"]:focus, input[type="button"]:focus, textarea:focus {
     border:1px solid white;
     outline:0px;
