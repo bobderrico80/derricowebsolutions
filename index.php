@@ -134,14 +134,17 @@
             <div id="contentContact" class="pageSection">
                 <h1>Contact</h1>
                 <div id="contactForm">
-                    <label for="name">Name:</label><input type="text" id="name" name="name"/><span class="warning" id="nameWarning">Required</span><br>
-                    <label for="email">E-Mail Address:</label><input type="text" id="email" name="email"/><span class="warning" id="emailWarning">Required</span><br>
+                    <label for="name">Name:</label><input type="text" id="name" name="name"/><span class="warning" id="nameWarning"></span><br>
+                    <label for="email">E-Mail Address:</label><input type="text" id="email" name="email"/><span class="warning" id="emailWarning"></span><br>
                     <label for="subject">Subject:</label><input type="text" id="subject" name="subject"/><br>
                     <label for="body">Compose your message below:</label><br>
                     <textarea name="body" id="body"></textarea><br>
                     <div id="buttonContainer">
                         <input type="button" id="submit" value="Send Email"/>
                     </div>
+                </div>
+                <div id="formResponse">
+                    
                 </div>
             </div>
         </div>
@@ -159,6 +162,7 @@
             //Function to change the visible content div
             function changeDiv(show){
                 
+                //determine the div that is currently visible
                 if ($("#contentHome").is(":visible")) {
                     var hide = $("#contentHome");
                 }
@@ -182,12 +186,55 @@
                     $("#contentProjects").animate({width:'700'});
                 }
                 
+                //hides visible div, and shows selected div
                 if(!(hide.is(":visible") && show.is(":visible"))) {
                 hide.animate({left:"-800px"});
                 hide.fadeOut();
                 show.animate({left:"0px"});
                 show.fadeIn();
                 }
+            }
+            
+            //Function to validate form
+            function validateForm() {
+                var valid = true;
+                
+                //validates name field completed
+                if($("#name").val() === "") {
+                    $("#nameWarning").html("Required");
+                    valid = false;
+                } else {
+                    $("#nameWarning").html("");
+                }
+                
+                //validates email field completed
+                if($("#email").val() === "") {
+                    $("#emailWarning").html("Required");
+                    valid = false;
+                } else {
+                    $("#emailWarning").html("");
+                }        
+        
+                //validates email format
+                var patt = /\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b/i;
+                if (!patt.test($("#email").val())) {
+                    if ($("#emailWarning").html() === "Required") {
+                        $("#emailWarning").html("Required");
+                    } else {
+                        $("#emailWarning").html("Invalid e-mail address");
+                    }
+                    valid = false;
+                } else {
+                    $("#emailWarning").html("");
+                }
+                
+                 //enables submit button if fields are valid
+                if (!valid) {
+                    $("#submit").prop("disabled", true);
+                } else {
+                    $("#submit").removeProp("disabled");
+                }
+                
             }
     
             //Event listeners for navbar links
@@ -209,10 +256,12 @@
             
             $("#contact").click(function(){
                 changeDiv($("#contentContact"));
+                validateForm();
             });
             
             $(".contactLink").click(function(){
                 changeDiv($("#contentContact"));
+                validateForm();
             });
             
             //Event listener for project gallery    
@@ -236,7 +285,52 @@
                         $("#projDisplay").html(response);
                     }
                 });
-            });            
+            });
+            
+            //Event listener for changing values of name/e-mail on contact form.
+            $("#name").change(function() {
+                validateForm();
+            });
+            
+            $("#email").change(function() {
+               validateForm();
+            });
+            
+            //Event listener for send email button
+            $("#submit").click(function (){
+               $.ajax({
+                   url : "sendEmail.php",
+                   data : {
+                       name : $("#name").val(),
+                       email : $("#email").val(),
+                       subject : $("#subject").val(),
+                       body : $("#body").val()
+                   },
+                   type : "POST",
+                   success : function(response) {
+                       //hides form and clears fields
+                       $("#contactForm").hide();
+                       $("#name").val("");
+                       $("#email").val("");
+                       $("#subject").val("");
+                       $("#body").val("");
+                       
+                       //displays response from server
+                       $("#formResponse").html(response);
+                   },
+                   error : function() {
+                       //hides form and clears fields
+                       $("#contactForm").hide();
+                       
+                       //displays error message
+                       $("formResponse").html(
+                            "<h2>The e-mail was not sent.</h2>\n"
+                            + "<p>Sorry about that.<br>\n"
+                            + "<span class=\"pseudoLink\" id=\"newEmail\">Click to try again</span>"
+                        );
+                   }
+               }); 
+            });
         </script>
     </body>
 </html>
