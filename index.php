@@ -71,8 +71,8 @@ try {
                     <h1>Projects</h1>
                     <p>Click on an image below to view more information about each project.</p>
                     <?php 
-                        $rst = $db->query('SELECT projectImgURL, projectID, projectTitle FROM projects');
-                        while ($row = $rst->fetch()) {
+                        $rstProject = $db->query('SELECT projectImgURL, projectID, projectTitle FROM projects');
+                        while ($row = $rstProject->fetch()) {
                             echo '<img src="thumbs/' . $row[0] . '" id="' . $row[1] . '" alt="' . $row[2] . '" title="' . $row[2] . '" class="projGal"/>';
                         }
                     ?>
@@ -86,18 +86,12 @@ try {
             <div id="contentSkills" class="pageSection">
                 <h1>Skills</h1>
                 <ul>
-                    <li>HTML5</li>
-                    <li>CSS3</li>
-                    <li>jQuery</li>
-                    <li>PHP</li>
-                    <li>SQL/MySQL</li>
-                    <li>AJAX</li>
-                    <li>WordPress</li>
-                    <li>Graphic Design</li>
-                    <li>Music Technology</li>
-                    <li>Educational Technology</li>
-                    <li>Blogs</li>
-                    <li>Websites for Organizations</li>
+                    <?php
+                        $rstSkills = $db->query('SELECT cmsContent from cms WHERE cmsID = 3');
+                        while ($rowSkills = $rstSkills->fetch()) {
+                            echo '<li>' . preg_replace('/\r\n/', '</li><li>', $rowSkills[0]) . '</li>';
+                        }
+                    ?>
                 </ul>
             </div>
             
@@ -105,10 +99,17 @@ try {
             <div id="contentAbout" class="pageSection">
                 <h1>About</h1>
                 <div class="figure">
-                    <img src="img/me.jpg" id="myPic" alt="Picture of Bob D'Errico"/>
-                    <p><strong>Bob D'Errico</strong><br>
-                        Web Designer/Developer
-                    </p>
+                    <?php
+                        $rstUser = $db->query('SELECT userName, userTitle FROM users WHERE userID = 2');
+                        while ($row = $rstUser->fetch()) {
+                    ?>
+                    <img src="img/me.jpg" id="myPic" alt="Picture of <?php echo $row[0]; ?>"/>
+                    <p><strong><?php echo $row[0]; ?></strong><br>
+                        <?php echo $row[1]; ?>
+                    </p>    
+                    <?php
+                        } //end while
+                    ?>
                 </div>
                 <?php
                     //Get About content from cms table

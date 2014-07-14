@@ -1,3 +1,18 @@
+<?php 
+//MySQL connection variables
+$hostname = 'localhost';
+$user = ini_get('mysqli.default_user');
+$pw = ini_get('mysqli.default_pw');
+$database = 'rhytxfpd_landingpage';
+
+//Connect to database
+try {
+    $db = new PDO('mysql:host=' . $hostname . ';dbname=' . $database,$user,$pw);
+} catch(PDOException $e) {
+    echo $e->getMessage();
+    die();
+}
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -20,18 +35,12 @@
             <div id="contentSkills" class="pageSection" style="display: block">
                 <h1>Skills</h1>
                 <ul>
-                    <li>HTML5</li>
-                    <li>CSS3</li>
-                    <li>jQuery</li>
-                    <li>PHP</li>
-                    <li>SQL/MySQL</li>
-                    <li>AJAX</li>
-                    <li>WordPress</li>
-                    <li>Graphic Design</li>
-                    <li>Music Technology</li>
-                    <li>Educational Technology</li>
-                    <li>Blogs</li>
-                    <li>Websites for Organizations</li>
+                    <?php
+                        $rstSkills = $db->query('SELECT cmsContent from cms WHERE cmsID = 3');
+                        while ($rowSkills = $rstSkills->fetch()) {
+                            echo '<li>' . preg_replace('/\r\n/', '</li><li>', $rowSkills[0]) . '</li>';
+                        }
+                    ?>
                 </ul>
             </div>
         </div>
