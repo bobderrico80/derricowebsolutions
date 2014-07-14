@@ -1,19 +1,34 @@
+<?php 
+//MySQL connection variables
+$hostname = 'localhost';
+$user = ini_get('mysqli.default_user');
+$pw = ini_get('mysqli.default_pw');
+$database = 'rhytxfpd_landingpage';
+
+//Connect to database
+try {
+    $db = new PDO('mysql:host=' . $hostname . ';dbname=' . $database,$user,$pw);
+} catch(PDOException $e) {
+    echo $e->getMessage();
+    die();
+}
+?>
 <!DOCTYPE html>
 <html>
     <head>
         <title>D'Errico Web Design</title>
         <link rel="stylesheet" type="text/css" href="stylesheet.css"/>
-        <!--<link rel="icon" type="image/png" href="favicon.png"/>-->
+        <link rel="icon" type="image/png" href="favicon.png"/>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     </head>
     <body>
         <div id="header">
-            <h1 id="home">D'Errico Web Design</h1>
+            <h1><a href="index.php" id="home">D'Errico Web Design</a></h1>
             <ul id="navbar">
-                <li id="projects">Projects</li>
-                <li id="skills">Skills</li>
-                <li id="about">About</li>
-                <li id="contact">Contact</li>
+                <li><a href="projects.php" id="projects">Projects</a></li>
+                <li><a href="skills.php" id="skills">Skills</a></li>
+                <li><a href="about.php" id="about">About</a></li>
+                <li><a href="contact.php" id="contact">Contact</a></li>
             </ul>
         </div>
         
@@ -55,12 +70,12 @@
                 <div id="thumbGrid">
                     <h1>Projects</h1>
                     <p>Click on an image below to view more information about each project.</p>
-                    <img src="thumbs/rrand.png" id="1" alt="The Rhythm Randomizer" class="projGal"/>
-                    <img src="thumbs/whsmb.png" id="2" alt="WHS Marching Band Practice Page" class="projGal"/>
-                    <img src="thumbs/pbass.png" id="3" alt="Project Bass" class="projGal"/>
-                    <img src="thumbs/ttmom.png" id="4" alt="Terrific Twosome Mothers of Multiples" class="projGal"/>
-                    <img src="thumbs/bth.png" id="5" alt="Beautifully Tressed Hair" class="projGal"/>
-                    <img src="thumbs/laura.png" id="6" alt="Ms. D'Errico's Language Arts Classes" class="projGal"/>
+                    <?php 
+                        $rst = $db->query('SELECT projectImgURL, projectID, projectTitle FROM projects');
+                        while ($row = $rst->fetch()) {
+                            echo '<img src="thumbs/' . $row[0] . '" id="' . $row[1] . '" alt="' . $row[2] . '" title="' . $row[2] . '" class="projGal"/>';
+                        }
+                    ?>
                 </div>
                 <div id="projDisplay">
                     
@@ -116,7 +131,7 @@
                 <p>
                     <strong>At this time, in addition to regular business website design, 
                     Bob is taking a limited number of non-profit or school clients 
-                    to help them grow - free of charge! <span class="pseudoLink contactLink">Contact him</span>
+                    to help them grow - free of charge! <a href="contact.php" class="contactLink">Contact him</a>
                     for details!</strong>
                 </p>
                 <p>
@@ -125,7 +140,7 @@
                     his wife, and two daughters. 
                 </p>
                 <p>
-                    Contact <span class="pseudoLink contactLink">Bob D'Errico</span> 
+                    Contact <a href="contact.php" class="contactLink">Bob D'Errico</a> 
                     here to start improving your group's presence and accessibility online. 
                 </p>
             </div>
@@ -141,6 +156,7 @@
                     <textarea name="body" id="body"></textarea><br>
                     <div id="buttonContainer">
                         <input type="button" id="submit" value="Send Email"/>
+                        <img src="img/preloader.gif" alt="loading" id="preloader" class="preloader"/>
                     </div>
                 </div>
                 <div id="formResponse">
@@ -238,28 +254,34 @@
             }
     
             //Event listeners for navbar links
-            $("#home").click(function(){
+            $("#home").click(function(event){
+                event.preventDefault();
                 changeDiv($("#contentHome"));
             });
             
-            $("#projects").click(function(){
+            $("#projects").click(function(event){
+                event.preventDefault();
                 changeDiv($("#contentProjects"));
             });
             
-            $("#skills").click(function(){
+            $("#skills").click(function(event){
+                event.preventDefault();
                 changeDiv($("#contentSkills"));
             });
             
-            $("#about").click(function(){
+            $("#about").click(function(event){
+                event.preventDefault();
                 changeDiv($("#contentAbout"));
             });
             
-            $("#contact").click(function(){
+            $("#contact").click(function(event){
+                event.preventDefault();
                 changeDiv($("#contentContact"));
                 validateForm();
             });
             
-            $(".contactLink").click(function(){
+            $(".contactLink").click(function(event){
+                event.preventDefault();
                 changeDiv($("#contentContact"));
                 validateForm();
             });
@@ -298,7 +320,9 @@
             
             //Event listener for send email button
             $("#submit").click(function (){
-               $.ajax({
+                $("#submit").hide();
+                $("#preloader").show();
+                $.ajax({
                    url : "sendEmail.php",
                    data : {
                        name : $("#name").val(),
@@ -314,6 +338,8 @@
                        $("#email").val("");
                        $("#subject").val("");
                        $("#body").val("");
+                       $("#submit").show();
+                       $("#preloader").hide();
                        
                        //displays response from server
                        $("#formResponse").html(response);

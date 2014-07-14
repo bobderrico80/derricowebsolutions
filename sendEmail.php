@@ -26,7 +26,7 @@ if (!mail($to, $subject, 'Message from: ' . $name . '\n' . $body, 'From: ' . $em
 } else {
     ?>
         <h2>Thank you!</h2>
-        <p>You can expect a reply from me shortly</p><br>
+        <p>You can expect a reply from me shortly</p>
         <span class="pseudoLink" id="newEmail">Send another message</span>
         <script>
             //Event listener for new email pseudolink

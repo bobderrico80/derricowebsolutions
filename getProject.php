@@ -24,8 +24,13 @@ $row = $stmt->fetch()
 ?>
 <h2 id="projTitle"><?php echo $row['projectTitle'];?></h2>
 <a href="<?php echo $row['projectURL'];?>" target="_blank">
-<img src="thumbs/<?php echo $row['projectImgURL'];?>" id="projImg" alt="<?php echo $row['projectTitle'];?>"/>
-<p id="projLink"><?php echo $row['projectDispURL'];?></p></a>
+    <img src="thumbs/<?php echo $row['projectImgURL'];?>" id="projImg" title="<?php echo $row['projectTitle'];?>" alt="<?php echo $row['projectTitle'];?>"/>
+</a>
+<p id="projLink">
+    <a href="<?php echo $row['projectURL'];?>" target="_blank">
+        <?php echo $row['projectDispURL'];?>
+    </a>
+</p>
 <p id="projSkills">Skills: <?php echo $row['projectSkills'];?></p>
 <p id="projDesc"><?php echo $row['projectDescription'];?></p>
 
