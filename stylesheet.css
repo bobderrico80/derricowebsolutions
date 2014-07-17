@@ -1,305 +1,580 @@
+/* General Styles */
+
 body {
     background-color: #033A73;
     background-image: url(img/background.jpg);
     background-attachment: fixed;
     background-size: cover;
     font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
-    margin:0px;
-    padding:0px;
-    color:white;
-    overflow-x:hidden;
+    margin: 0px;
+    padding: 0px;
+    color: white;
+    overflow-x: hidden;
 }
 
 a:link, a:visited {
-    color:#4087D0;
-    text-decoration:none;
+    color: #4087D0;
+    text-decoration: none;
 }
 
 a:hover {
-    text-decoration:underline;
+    text-decoration: underline;
 }
 
 img.linkIcon {
-    width:1.5em;
-    display:inline-block;
-    vertical-align:middle;
-    margin-bottom:10px;
-    margin-top:10px;
+    width: 1.5em;
+    display: inline-block;
+    vertical-align: middle;
+    margin-bottom: 10px;
+    margin-top: 10px;
 }
 
 #header {
-    width:100%;
-    height:50px;
-    background-color:#020509;
-    margin:0px;
+    background-color: #020509;
 }
 
 #header h1 {
-    margin:0px;
-    margin-left:10px;
-    padding:0px;
-    font-weight:normal;
-    font-size:2em;
-    line-height:50px;
-    display:inline-block;
+    font-weight: normal;
 }
 
 #header h1 a {
-    color:white;
+    color: white;
 }
 
 #header h1 a:hover {
-    text-decoration:none;
+    text-decoration: none;
 }
 
 #header h1:hover {
-    cursor:pointer;
+    cursor: pointer;
 }
 
 #navbar {
-    list-style:none;
-    padding:0px;
-    margin:0px;
-    display:inline-block;
-    margin-left:25px
-}
-
-#navbar li {
-    display:inline-block;
+    list-style: none;
 }
 
 #navbar a {
-    position:relative;
-    top:-3px;
-    margin-left:50px;
-    font-size:1.5em;
-    font-weight:lighter;
+    font-size: 1.5em;
+    font-weight: lighter;
     color: #ccc;
 }
 
 #navbar a:hover {
-    color:white;
-    text-decoration:none;
-}
-
-#contentWrapper {
-    white-space:nowrap;
+    color: white;
+    text-decoration: none;
 }
 
 .pageSection {
-    margin:40px;
-    padding:20px;
-    border:1px solid #021A33;
-    background-color:rgba(2,26,51,0.85);
-    width:700px;
-    height:500px;
-    display:inline-block;
-    position:absolute;
+    border: 1px solid #021A33;
+    background-color: rgba(2,26,51,0.85);
+    position: relative;
 }
 
 .pageSection h1, h2 {
-    margin:0px;
+    margin: 0px;
 }
 
-.pageSection  h1 {
-    font-weight:normal;
-    font-size:4em;
+.pageSection h1 {
+    font-weight: normal;
 }
 
 .pageSection h2 {
-    font-weight:normal;
-    font-size:2em;
-    margin-bottom:20px;
+    font-weight: normal;
+    margin-bottom: 20px;
 }
 
 .pageSection ul {
-    list-style:none;
-    margin:0px;
-    padding:0px;
-    padding-left:35px;
-    font-size:1.5em;
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
 }
 
-
 #contentProjects {
-    display:none;
-    white-space:nowrap;
+    display: none;
 }
 
 #thumbGrid {
-    white-space:normal;
-    width:670px;
-    display:inline-block;
-    vertical-align:middle;
+    white-space: normal;
+    display: inline-block;
+    vertical-align: middle;
 }
 
 #thumbGrid img {
-    width:200px;
-    height:150px;
-    vertical-align:middle;
-    display:inline-block;
-    margin:10px;
-    opacity:0.9;
+    width: 200px;
+    vertical-align: middle;
+    display: inline-block;
+    margin: 10px;
+    opacity: 0.9;
 }
 
 #thumbGrid img:hover {
-    outline:2px solid #4087D0;
-    opacity:1;
+    outline: 2px solid #4087D0;
+    opacity: 1;
 }
 
 #projDisplay {
-    height:400px;
-    top:50px;
-    width:430px;
-    left:700px;
-    margin-left:50px;
-    display:none;
-    vertical-align:middle;
-    white-space:normal;
-    text-align:center;
-    position:absolute;
+    display: none;
+    white-space: normal;
+    text-align: center;
 }
 
 #projDisplay p, h2 {
-    margin:0px;
+    margin: 0px;
 }
 
 #projImg {
-    width:275px;
+    width: 275px;
 }
 
 #projImg:hover {
-    outline:2px solid #4087D0;
+    outline: 2px solid #4087D0;
 }
 
 #projSkills {
-    padding-top:5px;
-    padding-bottom:5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 #projDesc {
     font-size: .9em;
 }
 
+#returnToThumbs {
+    padding-top: 10px;
+}
+
 #contentSkills {
-    display:none;
+    display: none;
 }
 
 #contentAbout {
-    display:none;
-    white-space:normal;
-    font-size:.9em;
+    display: none;
+    white-space: normal;
+    font-size: .9em;
 }
 
 .figure {
-    float:left;
-    display:block;
-    width:220px;
-    margin-top:18px;
-    margin-right:10px;
-    margin-bottom:20px;
-    text-align:center;
+    float: left;
+    display: block;
+    width: 220px;
+    margin-top: 18px;
+    margin-right: 10px;
+    margin-bottom: 20px;
+    text-align: center;
 }
 
 .figure img {
-    width:200px;
+    width: 200px;
 }
 
 .figure p {
-    margin:0px;
-    text-align:center;
-    font-size:.8em;
+    margin: 0px;
+    text-align: center;
+    font-size: .8em;
 }
 
 #contentContact {
-    display:none;
+    display: none;
 }
 
 #contentContact label {
-    width:125px;
-    display:inline-block;
-    text-align:right;
-    margin-right:10px;
+    width: 125px;
+    display: inline-block;
+    text-align: right;
+    margin-right: 10px;
+}
+
+#contentContact label[for="body"] {
+    width: auto;
 }
 
 #contentContact input[type="text"], textarea, input[type="button"], input[type="submit"] {
-    background-color:#021A33;
-    border:1px solid #055DBA;
-    color:white;
+    background-color: #021A33;
+    border: 1px solid #055DBA;
+    color: white;
     font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
-    
+
 }
 
 #contentContact input[type="text"]:hover, input[type="button"]:hover, input[type="submit"]:hover, textarea:hover {
-    border:1px solid #4087D0;
+    border: 1px solid #4087D0;
 }
 
 #contentContact input[type="text"]:focus, input[type="button"]:focus, input[type="submit"]:focus, textarea:focus {
-    border:1px solid white;
-    outline:0px;
+    border: 1px solid white;
+    outline: 0px;
 }
 
 #contentContact input[type="text"] {
-    width:400px;
-    display:inline-block;
-    margin-bottom:5px;
-    margin-top:5px
+    width: 400px;
+    display: inline-block;
+    margin-bottom: 5px;
+    margin-top: 5px
 }
 
 #contentContact textarea {
-    width:660px;
-    height:260px;
-    font-size:.9em;
+    width: 660px;
+    height: 260px;
+    font-size: .9em;
 }
 
 input[type="button"], input[type="submit"] {
-    font-size:1em;
-    padding-left:10px;
-    padding-right:10px;
+    font-size: 1em;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 #buttonContainer {
-    width:660px;
-    margin:7px;
-    text-align:right;
+    width: 660px;
+    margin: 7px;
+    text-align: right;
 }
 
 #contentContact input[type="button"]:disabled {
-    color:#055DBA;
+    color: #055DBA;
 }
 
 #contentContact input[type="button"]:hover:disabled {
-    border:1px solid #055DBA;
+    border: 1px solid #055DBA;
 }
 
 .warning {
-    margin-left:8px;
+    margin-left: 8px;
+}
+
+.formRow {
+    white-space: nowrap
 }
 
 #formResponse p {
-    padding:0px;
-    margin:0px;
+    padding: 0px;
+    margin: 0px;
 }
 
 .preloader {
-    height:26px;
-    margin-top:3px;
-    display:none;
+    height: 26px;
+    margin-top: 3px;
+    display: none;
+}
+
+.pseudoLink {
+    color:#4087D0;
+    cursor:pointer;
+}
+
+.pseudoLink:hover {
+    text-decoration:underline;
 }
 
 #footer {
-    background-color:#020509;
-    text-align:center;
-    width:100%;
-    height:30px;
-    position:fixed;
-    bottom:0px;
-    left:0px;
-    font-size:.8em;
+    background-color: #020509;
+    text-align: center;
+    width: 100%;
+    height: 30px;
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    font-size: .8em;
 }
 
 #footer p {
-    margin:0px;
-    padding:0px;
-    line-height:30px;
+    margin: 0px;
+    padding: 0px;
+    line-height: 30px;
+}
+
+/* For very wide screens 1350px and wider */
+@media screen and (min-width: 1350px) {
+    #thumbGrid {
+        width:670px;
+    }
+    
+    #projDisplay {
+        height: 400px;
+        top: 50px;
+        width: 430px;
+        left: 700px;
+        margin-left: 50px;
+        vertical-align: middle;
+        position: absolute;
+    }
+    
+    #returnToThumbs {
+        display: none;
+    }
+}
+
+/* For wide screens 900px wide and up */
+@media screen and (min-width: 900px) {
+    #header {
+        width:100%;
+        height: 50px;
+        margin: 0px;
+    }
+    
+    #header h1 {
+        margin: 0px;
+        margin-left: 10px;
+        padding: 0px;
+        line-height: 50px;
+        display: inline-block;
+        font-size: 2em;
+    }
+    
+    #navbar {
+        padding: 0px;
+        margin: 0px;
+        display: inline-block;
+        margin-left: 25px
+    }
+    
+    #navbar a {
+        position: relative;
+        top: -3px;
+        margin-left: 50px;
+    }
+    
+    #navbar li {
+        display: inline-block;
+    }
+    
+    .pageSection {
+        margin: 40px;
+        padding: 20px;
+        width: 700px;
+        height: 500px;
+        display: inline-block;
+    }
+    
+    .pageSection h1 {
+        font-size: 4em;
+    }
+    
+    .pageSection h2 {
+        font-size: 2em;
+        margin-bottom: 20px;
+    }
+    
+    .pageSection ul {
+        padding-left: 35px;
+        font-size: 1.5em;
+    }
+    
+    #contentProjects {
+        white-space: nowrap;
+    }
+    
+    #thumbGrid {
+        text-align: center
+    }
+    
+    #thumbGrid h1 {
+        text-align: left;
+    }
+    
+    #returnToThumbs {
+        display: block
+    }
+
+}
+
+/* For medium screens 899px down to 361px wide */
+@media screen and (max-width: 899px) and (min-width:361px) {
+    #header {
+        width:100%;
+        height: 80px;
+        margin: 0px;
+    }
+    
+    #header h1 {
+        margin: 0px;
+        margin-left: 10px;
+        padding: 0px;
+        display: block;
+        text-align: center;
+        font-size: 2em;
+    }
+    
+    #navbar {
+        padding: 0px;
+        margin: 0px;
+        display: block;
+        text-align: center;
+        white-space: nowrap;
+    }
+    
+    #navbar a {
+        margin-left: 25px;
+        margin-right: 25px;
+    }
+    
+    #navbar li {
+        display: inline-block;
+    }
+    
+    .pageSection {
+        margin: 20px;
+        margin-bottom: 50px;
+        padding: 20px;
+        display: block;
+    }
+    
+    .pageSection h1 {
+        font-size: 4em;
+    }
+    
+    .pageSection h2 {
+        font-size: 2em;
+        margin-bottom: 20px;
+    }
+    
+    .pageSection ul {
+        padding-left: 35px;
+        font-size: 1.5em;
+    }
+    
+    #contentProjects {
+        white-space: nowrap;
+    }
+    
+    #thumbGrid {
+        text-align: center
+    }
+    
+    #thumbGrid h1 {
+        text-align: left;
+    }
+    
+    #returnToThumbs {
+        display: block
+    }
+    
+    #contentContact input[type="text"] {
+        width: 60%;
+    }
+    
+    #contentContact label {
+        width: 20%
+    }
+    
+    #contentContact textarea {
+        width: 99%;
+    }
+    
+    #contentContact #buttonContainer {
+        width: 99%;
+    }
+
+}
+
+/* For small screens 360px or less wide*/
+@media screen and (max-width: 360px) {
+    #header {
+        width:100%;
+        height: 80px;
+        margin: 0px;
+        text-align: center
+    }
+    
+    #header h1 {
+        margin: 0px;
+        margin-left: 0px;
+        padding: 0px;
+        display: block;
+        font-size: 1.75em;
+    }
+    
+    #navbar {
+        padding: 0px;
+        margin: 0px;
+        display: block;
+        font-size: 1em;
+        overflow: scroll;
+        white-space: nowrap;
+    }
+    
+    #navbar a {
+        margin-left: 10px;
+        margin-right: 10px
+    }
+    
+    #navbar li {
+        display: inline;
+    }
+    
+    .pageSection {
+        padding: 10px;
+        margin: 10px;
+        margin-bottom: 40px;
+        display: block;
+    }
+    
+    .pageSection h1 {
+        font-size: 2.75em;
+    }
+    
+    .pageSection h2 {
+        font-size: 1.25em;
+        margin-bottom: 20px;
+    }
+    
+    .pageSection ul {
+        padding-left: 15px;
+        font-size: 1.25em;
+    }
+    
+    #contentProjects {
+        white-space: nowrap;
+    }
+    
+    #thumbGrid {
+        text-align: center
+    }
+    
+    #thumbGrid h1 {
+        text-align: left;
+    }
+    
+    #returnToThumbs {
+        display: block
+    }
+    
+    .figure {
+        float: none;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    #contentContact .formRow {
+        white-space:normal;
+        margin-bottom:-1em; 
+    }
+    
+    #contentContact label {
+        width:auto;
+        display:block;
+        text-align:left;
+    }
+    
+    #contentContact input[type="text"] {
+        width:100%;
+        display:block;
+    }
+    
+    #contentContact .warning {
+        display:block;
+        text-align:right;
+    }
+    
+    #contentContact textarea {
+        width:100%;
+        margin-top:-1em;
+    }
+    
+    #contentContact #buttonContainer {
+        display:block;
+        width:100%;
+    }
+
+
 }

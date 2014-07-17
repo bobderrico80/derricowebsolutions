@@ -33,4 +33,4 @@ $row = $stmt->fetch()
 </p>
 <p id="projSkills">Skills: <?php echo $row['projectSkills'];?></p>
 <p id="projDesc"><?php echo $row['projectDescription'];?></p>
-
+<p id="returnToThumbs"><a href="projects.php">Return to project selections</a></p>

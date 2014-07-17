@@ -33,6 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <html>
     <head>
         <title>D'Errico Web Design</title>
+        <meta name="viewport" content="width=device-width"/>
         <link rel="stylesheet" type="text/css" href="stylesheet.css"/>
         <link rel="icon" type="image/png" href="favicon.png"/>
     </head>
