@@ -2,9 +2,9 @@
 
 body {
     background-color: #033A73;
-    background-image: url(img/background.jpg);
+    background-image: url(img/background-large.jpg);
     background-attachment: fixed;
-    background-size: cover;
+    background-size: auto;
     font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
     margin: 0px;
     padding: 0px;
@@ -29,6 +29,17 @@ img.linkIcon {
     margin-top: 10px;
 }
 
+/*#test {
+    position:fixed;
+    top:0px;
+    left:0px;
+    width:200px;
+    height:200px;
+    outline:1px solid red;
+    background-color:rgba(60,0,0,.75);
+    z-index: 1;
+}*/
+
 #header {
     background-color: #020509;
 }
@@ -47,6 +58,10 @@ img.linkIcon {
 
 #header h1:hover {
     cursor: pointer;
+}
+
+#hamburger {
+    display:none;
 }
 
 #navbar {
@@ -87,6 +102,10 @@ img.linkIcon {
     list-style: none;
     margin: 0px;
     padding: 0px;
+}
+
+#menuHint {
+    display: none;
 }
 
 #contentProjects {
@@ -379,7 +398,11 @@ input[type="button"], input[type="submit"] {
 }
 
 /* For medium screens 899px down to 361px wide */
-@media screen and (max-width: 899px) and (min-width:361px) {
+@media screen and (max-width: 899px) and (min-width:361px) {    
+    body {
+        background-image:url(img/background-med.jpg);
+    }
+    
     #header {
         width:100%;
         height: 80px;
@@ -469,11 +492,16 @@ input[type="button"], input[type="submit"] {
 
 /* For small screens 360px or less wide*/
 @media screen and (max-width: 360px) {
+    body {
+        background-image:url(img/background-small.jpg);
+    }
+    
     #header {
         width:100%;
-        height: 80px;
+        height: 40px;
         margin: 0px;
-        text-align: center
+        padding-left:5px;
+        text-align: left;
     }
     
     #header h1 {
@@ -484,22 +512,44 @@ input[type="button"], input[type="submit"] {
         font-size: 1.75em;
     }
     
+    #hamburger {
+        display:inline;
+        width:25px;
+        position:absolute;
+        right:10px;
+        top:7px;
+        cursor: pointer;
+    }
+    
     #navbar {
         padding: 0px;
         margin: 0px;
-        display: block;
+        display: inline-block;
+        background-color:rgba(2, 5, 9, .9);
         font-size: 1em;
-        overflow: scroll;
-        white-space: nowrap;
+        overflow: hidden;
+        white-space: normal;
+        position:absolute;
+        z-index:1;
+        width:125px;
+        right:3px;
+        padding-top:10px;
+        padding-bottom:10px;
+        text-align:right;
+        display:none;
     }
     
     #navbar a {
         margin-left: 10px;
-        margin-right: 10px
+        margin-right: 10px;
+        color:white;
+
     }
     
     #navbar li {
-        display: inline;
+        display: block;
+        padding-top:10px;
+        padding-bottom:10px
     }
     
     .pageSection {
@@ -521,6 +571,12 @@ input[type="button"], input[type="submit"] {
     .pageSection ul {
         padding-left: 15px;
         font-size: 1.25em;
+    }
+    
+    #menuHint {
+        display:block;
+        text-align: center;
+        font-size:1.25em;
     }
     
     #contentProjects {

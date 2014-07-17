@@ -31,7 +31,25 @@ try {
                 <li><a href="about.php" id="about">About</a></li>
                 <li><a href="contact.php" id="contact">Contact</a></li>
             </ul>
+            <img id="hamburger" src="img/hamburger.png" title="Main Menu" alt="Main Menu"/>
+            
         </div>
+        
+        <!--DIV for testing
+        <div id="test">
+            window.innerWidth: <span id="innerWidth"></span><br>
+            window.innerHeight: <span id="innerHeight"></span><br>
+            css-width: <span id="cssWidth"></span><br>
+            css-height: <span id="cssHeight"></span>
+            <script>
+            $(window).resize(function(){
+                $("#innerWidth").html(window.innerWidth);
+                $("#innerHeight").html(window.innerHeight);
+                $("#cssWidth").html($("body").width());
+                $("#cssHeight").html($("body").height());
+            });
+            </script>
+        </div>-->
         
         <!--Home Section-->
         <div id="contentHome" class="pageSection">
@@ -63,6 +81,7 @@ try {
                     </a>
                 </li>
             </ul>
+            <p id="menuHint">Tap here to learn more</p>
         </div>
 
         <!--Projects Section-->
@@ -181,9 +200,26 @@ try {
                     var hide = $("#contentContact");
                 }
                 
+                //special handling for footer div on content div change
+                if($("#footer").css("position") == "relative") {
+                    $("#footer").hide();
+                }
+                
+                
+                
                 //hides visible div, and shows selected div
                 if(!(hide.is(":visible") && show.is(":visible"))) {
-                    hide.slideUp(null, null, function(){show.fadeIn();});
+                    
+                    //slides up hamburger menu (if hamburger menu is in use)
+                    if($("#hamburger").is(":visible")) {
+                        $("#navbar").slideUp("fast");
+                    }
+                    
+                    hide.slideUp(null, null, function(){
+                        show.fadeIn();
+                        $("#footer").show();
+                        $(window).resize();
+                    });
                 }
             }
             
@@ -269,6 +305,15 @@ try {
                 changeDiv($("#contentContact"));
                 validateForm();
             });
+            
+            //Event listener for hamburger and menuHint
+            $("#hamburger").click(function(){
+                $("#navbar").slideToggle("fast");
+            });
+            
+            $("#menuHint").click(function(){
+                $("#navbar").slideDown("fast");
+            });
                         
             /*****************************************/
             /** EVENT LISTENERS FOR WINDOW RESIZING **/
@@ -328,6 +373,16 @@ try {
                 if((window.innerWidth >= 700) || (window.innerWidth <= 360)) {
                     $("label[for=\"email\"]").html("Email Address:");
                 }
+            });
+            
+            //Event listener to adjust positioning of the footer if CSS width is longer
+            //than the screen width
+            $(window).resize(function(){
+                if(window.innerHeight >= $("body").height()) {
+                    $("#footer").css("position","fixed");
+                } else {
+                    $("#footer").css("position","relative");
+                } 
             });
             
             /***************************************/
