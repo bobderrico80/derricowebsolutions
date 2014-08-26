@@ -17,7 +17,7 @@ try {
 }
 
 //Lookup selected ID
-$stmt = $db->query('SELECT * FROM projects WHERE projectID = ' . $id);
+$stmt = $db->query('SELECT * FROM projects WHERE projectID = ' . $id . ' ORDER BY projectID');
 
 $row = $stmt->fetch()
 //Display html

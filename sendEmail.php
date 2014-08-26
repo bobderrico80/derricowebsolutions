@@ -7,7 +7,7 @@ $subject = filter_var($_POST['subject'], FILTER_SANITIZE_STRING);
 $body = wordwrap(filter_var($_POST['body'], FILTER_SANITIZE_STRING ), 70);
 
 //set to
-$to = 'bob@derricowebdesign.com';
+$to = 'bob@derricowebsolutions.com';
 
 //send email
 if (!mail($to, $subject, 'Message from: ' . $name . '\n' . $body, 'From: ' . $email)) {

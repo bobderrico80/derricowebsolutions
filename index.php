@@ -16,7 +16,7 @@ try {
 <!DOCTYPE html>
 <html>
     <head>
-        <title>D'Errico Web Design</title>
+        <title>D'Errico Web Solutions</title>
         <meta name="viewport" content="width=device-width"/>
         <link rel="stylesheet" type="text/css" href="stylesheet.css"/>
         <link rel="icon" type="image/png" href="favicon.png"/>
@@ -24,7 +24,7 @@ try {
     </head>
     <body>
         <div id="header">
-            <h1><a href="index.php" id="home">D'Errico Web Design</a></h1>
+            <h1><a href="index.php" id="home">D'Errico Web Solutions</a></h1>
             <ul id="navbar">
                 <li><a href="projects.php" id="projects">Projects</a></li>
                 <li><a href="skills.php" id="skills">Skills</a></li>
@@ -54,7 +54,7 @@ try {
         <!--Home Section-->
         <div id="contentHome" class="pageSection">
             <h1>Bob D'Errico</h1>
-            <h2>Web Developer/Designer</h2>
+            <h2>Web Developer</h2>
             <ul>
                 <li>
                     <a href="https://github.com/bobderrico80" target="_blank">
@@ -90,7 +90,7 @@ try {
                 <h1>Projects</h1>
                 <p>Click on an image below to view more information about each project.</p>
                 <?php 
-                    $rstProject = $db->query('SELECT projectImgURL, projectID, projectTitle FROM projects');
+                    $rstProject = $db->query('SELECT projectImgURL, projectID, projectTitle FROM projects ORDER BY projectID');
                     while ($row = $rstProject->fetch()) {
                         echo '<img src="thumbs/' . $row[0] . '" id="' . $row[1] . '" alt="' . $row[2] . '" title="' . $row[2] . '" class="projGal"/>';
                     }
@@ -164,7 +164,7 @@ try {
             </div>
         </div>
         <div id="footer">
-            <p>Copyright &copy; <?php echo date('Y'); ?> D'Errico Web Design</p>
+            <p>Copyright &copy; <?php echo date('Y'); ?> D'Errico Web Solutions</p>
         </div>
         <script>
             //Variables representing the content divs
@@ -268,7 +268,7 @@ try {
             /** EVENT LISTNERS FOR NAVIGATION LINKS **/
             /*****************************************/
             
-            //Home (D'Errico Web Design Heading)
+            //Home (D'Errico Web Solutions Heading)
             $("#home").click(function(event){
                 event.preventDefault();
                 changeDiv($("#contentHome"));

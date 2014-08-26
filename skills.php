@@ -16,14 +16,14 @@ try {
 <!DOCTYPE html>
 <html>
     <head>
-        <title>D'Errico Web Design</title>
+        <title>D'Errico Web Solutions</title>
         <meta name="viewport" content="width=device-width"/>
         <link rel="stylesheet" type="text/css" href="stylesheet.css"/>
         <link rel="icon" type="image/png" href="favicon.png"/>
     </head>
     <body>
         <div id="header">
-            <h1><a href="index.php" id="home">D'Errico Web Design</a></h1>
+            <h1><a href="index.php" id="home">D'Errico Web Solutions</a></h1>
             <ul id="navbar">
                 <li><a href="projects.php" id="projects">Projects</a></li>
                 <li><a href="skills.php" id="skills">Skills</a></li>
@@ -46,7 +46,7 @@ try {
             </div>
         </div>
         <div id="footer">
-            <p>Copyright &copy; <?php echo date('Y'); ?> D'Errico Web Design</p>
+            <p>Copyright &copy; <?php echo date('Y'); ?> D'Errico Web Solutions</p>
         </div>
     </body>
 </html>
