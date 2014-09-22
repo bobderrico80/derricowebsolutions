@@ -1,17 +1,5 @@
-<?php 
-//MySQL connection variables
-$hostname = 'localhost';
-$user = ini_get('mysqli.default_user');
-$pw = ini_get('mysqli.default_pw');
-$database = 'rhytxfpd_landingpage';
-
-//Connect to database
-try {
-    $db = new PDO('mysql:host=' . $hostname . ';dbname=' . $database,$user,$pw);
-} catch(PDOException $e) {
-    echo $e->getMessage();
-    die();
-}
+<?php
+require_once('sqlconn.php');
 ?>
 <!DOCTYPE html>
 <html>
@@ -31,7 +19,7 @@ try {
                 <li><a href="contact.php" id="contact">Contact</a></li>
             </ul>
         </div>
-        
+
         <div id="contentWrapper">
             <div id="contentAbout" class="pageSection" style="display: block">
                 <h1>About</h1>
@@ -43,7 +31,7 @@ try {
                     <img src="img/me.jpg" id="myPic" alt="Picture of <?php echo $row[0]; ?>"/>
                     <p><strong><?php echo $row[0]; ?></strong><br>
                         <?php echo $row[1]; ?>
-                    </p>    
+                    </p>
                     <?php
                         } //end while
                     ?>

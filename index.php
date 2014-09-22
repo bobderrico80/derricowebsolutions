@@ -1,17 +1,5 @@
-<?php 
-//MySQL connection variables
-$hostname = 'localhost';
-$user = ini_get('mysqli.default_user');
-$pw = ini_get('mysqli.default_pw');
-$database = 'rhytxfpd_landingpage';
-
-//Connect to database
-try {
-    $db = new PDO('mysql:host=' . $hostname . ';dbname=' . $database,$user,$pw);
-} catch(PDOException $e) {
-    echo $e->getMessage();
-    die();
-}
+<?php
+require_once('sqlconn.php');
 ?>
 <!DOCTYPE html>
 <html>
@@ -32,9 +20,9 @@ try {
                 <li><a href="contact.php" id="contact">Contact</a></li>
             </ul>
             <img id="hamburger" src="img/hamburger.png" title="Main Menu" alt="Main Menu"/>
-            
+
         </div>
-        
+
         <!--DIV for testing
         <div id="test">
             window.innerWidth: <span id="innerWidth"></span><br>
@@ -50,7 +38,7 @@ try {
             });
             </script>
         </div>-->
-        
+
         <!--Home Section-->
         <div id="contentHome" class="pageSection">
             <h1>Bob D'Errico</h1>
@@ -89,7 +77,7 @@ try {
             <div id="thumbGrid">
                 <h1>Projects</h1>
                 <p>Click on an image below to view more information about each project.</p>
-                <?php 
+                <?php
                     $rstProject = $db->query('SELECT projectImgURL, projectID, projectTitle FROM projects ORDER BY projectID');
                     while ($row = $rstProject->fetch()) {
                         echo '<img src="thumbs/' . $row[0] . '" id="' . $row[1] . '" alt="' . $row[2] . '" title="' . $row[2] . '" class="projGal"/>';
@@ -125,7 +113,7 @@ try {
                 <img src="img/me.jpg" id="myPic" alt="Picture of <?php echo $row[0]; ?>"/>
                 <p><strong><?php echo $row[0]; ?></strong><br>
                     <?php echo $row[1]; ?>
-                </p>    
+                </p>
                 <?php
                     } //end while
                 ?>
@@ -175,14 +163,14 @@ try {
             var about = $("#contentAbout");
             var contact = $("#contentContact");
             */
-            
+
             /***************/
             /** FUNCTIONS **/
             /***************/
-            
+
             //Function to change the visible content div
             function changeDiv(show) {
-                
+
                 //determine the div that is currently visible
                 if ($("#contentHome").is(":visible")) {
                     var hide = $("#contentHome");
@@ -199,22 +187,22 @@ try {
                 if ($("#contentContact").is(":visible")) {
                     var hide = $("#contentContact");
                 }
-                
+
                 //special handling for footer div on content div change
                 if($("#footer").css("position") == "relative") {
                     $("#footer").hide();
                 }
-                
-                
-                
+
+
+
                 //hides visible div, and shows selected div
                 if(!(hide.is(":visible") && show.is(":visible"))) {
-                    
+
                     //slides up hamburger menu (if hamburger menu is in use)
                     if($("#hamburger").is(":visible")) {
                         $("#navbar").slideUp("fast");
                     }
-                    
+
                     hide.slideUp(null, null, function(){
                         show.fadeIn();
                         $("#footer").show();
@@ -222,11 +210,11 @@ try {
                     });
                 }
             }
-            
+
             //Function to validate form
             function validateForm() {
                 var valid = true;
-                
+
                 //validates name field completed
                 if($("#name").val() === "") {
                     $("#nameWarning").html("Required");
@@ -234,15 +222,15 @@ try {
                 } else {
                     $("#nameWarning").html("");
                 }
-                
+
                 //validates email field completed
                 if($("#email").val() === "") {
                     $("#emailWarning").html("Required");
                     valid = false;
                 } else {
                     $("#emailWarning").html("");
-                }        
-        
+                }
+
                 //validates email format
                 var patt = /\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b/i;
                 if (!patt.test($("#email").val())) {
@@ -255,74 +243,74 @@ try {
                 } else {
                     $("#emailWarning").html("");
                 }
-                
+
                  //enables submit button if fields are valid
                 if (!valid) {
                     $("#submit").prop("disabled", true);
                 } else {
                     $("#submit").removeProp("disabled");
-                }  
+                }
             }
-            
+
             /*****************************************/
             /** EVENT LISTNERS FOR NAVIGATION LINKS **/
             /*****************************************/
-            
+
             //Home (D'Errico Web Solutions Heading)
             $("#home").click(function(event){
                 event.preventDefault();
                 changeDiv($("#contentHome"));
             });
-            
+
             //Projects on Navbar
             $("#projects").click(function(event){
                 event.preventDefault();
                 changeDiv($("#contentProjects"));
             });
-            
+
             //Skills on Navbar
             $("#skills").click(function(event){
                 event.preventDefault();
                 changeDiv($("#contentSkills"));
             });
-            
+
             //About on Navbar
             $("#about").click(function(event){
                 event.preventDefault();
                 changeDiv($("#contentAbout"));
             });
-            
+
             //Contact on Navbar
             $("#contact").click(function(event){
                 event.preventDefault();
                 changeDiv($("#contentContact"));
                 validateForm();
             });
-            
+
             //Contact link found in text
             $(".contactLink").click(function(event){
                 event.preventDefault();
                 changeDiv($("#contentContact"));
                 validateForm();
             });
-            
+
             //Event listener for hamburger and menuHint
             $("#hamburger").click(function(){
                 $("#navbar").slideToggle("fast");
             });
-            
+
             $("#menuHint").click(function(){
                 $("#navbar").slideDown("fast");
             });
-                        
+
             /*****************************************/
             /** EVENT LISTENERS FOR WINDOW RESIZING **/
             /*****************************************/
-    
+
             //Triggers resize event on document ready
             //(allows dynamic content to be set on page load)
             $(document).ready(function(){$(window).resize();});
-            
+
             //Event listener to change project page display format if window is resized
             $(window).resize(function(){
                 //larger than 1350 wide
@@ -331,37 +319,37 @@ try {
                     $("#contentProjects").css("width","1200px");
                     $("#returnToThumbs").hide();
                 }
-                
+
                 if((window.innerWidth >= 1350) && !($("#projDisplay").is(":visible"))) { //and display is hidden
                     $("#thumbGrid").show();
                     $("#contentProjects").css("width","700px");
                 }
-                
+
                 //Between 900 and 1349 wide
                 if((window.innerWidth >= 900) && (window.innerWidth < 1350) && ($("#projDisplay").is(":visible"))) { //and display is visible
                     $("#thumbGrid").hide();
                     $("#contentProjects").css("width","700px");
                     $("#returnToThumbs").show();
                 }
-                
+
                 if((window.innerWidth >= 900) && (window.innerWidth < 1350) && !($("#projDisplay").is(":visible"))) { //and display is hidden
                     $("thumbGrid").show();
                     $("#contentProjects").css("width","700px");
                 }
-                
+
                 //Smaller than 900
                 if((window.innerWidth < 900) && ($("#projDisplay").is(":visible"))) { //and display is visible
                     $("#thumbGrid").hide();
                     $("#contentProjects").css("width","auto");
                     $("#returnToThumbs").show();
                 }
-                
+
                 if(((window.innerWidth) < 900) && !($("#projDisplay").is(":visible"))) { //and display is hiden
                     $("thumbGrid").show();
                     $("#contentProjects").css("width","auto");
                 }
             });
-            
+
             //Event listener to change "E-Mail Address" label to "E-Mail" on contacts
             //form if the window is between 700 and 360 px wide
             $(window).resize(function(){
@@ -374,7 +362,7 @@ try {
                     $("label[for=\"email\"]").html("Email Address:");
                 }
             });
-            
+
             //Event listener to adjust positioning of the footer if CSS width is longer
             //than the screen width
             $(window).resize(function(){
@@ -382,16 +370,16 @@ try {
                     $("#footer").css("position","fixed");
                 } else {
                     $("#footer").css("position","relative");
-                } 
+                }
             });
-            
+
             /***************************************/
             /** EVENT LISTENERS FOR PROJECTS PAGE **/
             /***************************************/
-            
-            //Event listener for project gallery    
+
+            //Event listener for project gallery
             $(".projGal").click (function(){
-                
+
                 //code for very wide screens (1350px and up)
                 if(window.innerWidth >= 1350) {
                     if ($("#projDisplay").is(":visible")) {
@@ -414,7 +402,7 @@ try {
                         }
                     });
                 }
-                
+
                 //code for normal and narrow screens
                 if(window.innerWidth < 1350) {
                     $("#thumbGrid").slideUp(null, null, function(){$("#projDisplay").fadeIn();});
@@ -429,28 +417,28 @@ try {
                         }
                     });
                 }
-                
+
             });
-    
+
             //Event listener for returnToThumbs link on narrow screens
             $(document).on("click", "#returnToThumbs", function(e){
                 $("#projDisplay").slideUp(null, null, function(){$("#thumbGrid").fadeIn();});
                 e.preventDefault();
             });
-            
+
             /***************************************/
             /** EVENT LISTENERS FOR CONTACTS PAGE **/
             /***************************************/
-            
+
             //Event listener for changing values of name/e-mail on contact form.
             $("#name").change(function() {
                 validateForm();
             });
-            
+
             $("#email").change(function() {
                validateForm();
             });
-            
+
             //Event listener for send email button
             $("#submit").click(function (){
                 $("#submit").hide();
@@ -474,7 +462,7 @@ try {
                        $("#submit").show();
                        $("#preloader").hide();
                        validateForm();
-                       
+
                        //displays response from server
                        $("#formResponse").html(response);
                    },
@@ -482,7 +470,7 @@ try {
                        //hides form and leaves fields intact
                        $("#contactForm").hide();
                        validateForm();
-                       
+
                        //displays error message
                        $("formResponse").html(
                             "<h2>The e-mail was not sent.</h2>\n"
@@ -490,7 +478,7 @@ try {
                             + "<span class=\"pseudoLink\" id=\"newEmail\">Click to try again</span>"
                         );
                    }
-               }); 
+               });
             });
         </script>
     </body>

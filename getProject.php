@@ -2,19 +2,9 @@
 //get ID from GET
 $id = $_GET['id'];
 
-//MySQL connection variables
-$hostname = 'localhost';
-$user = ini_get('mysqli.default_user');
-$pw = ini_get('mysqli.default_pw');
-$database = 'rhytxfpd_landingpage';
-
-//Connect to database
-try {
-    $db = new PDO('mysql:host=' . $hostname . ';dbname=' . $database,$user,$pw);
-} catch(PDOException $e) {
-    echo $e->getMessage();
-    die();
-}
+<?php
+require_once('sqlconn.php');
+?>
 
 //Lookup selected ID
 $stmt = $db->query('SELECT * FROM projects WHERE projectID = ' . $id . ' ORDER BY projectID');

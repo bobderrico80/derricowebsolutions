@@ -1,17 +1,5 @@
-<?php 
-//MySQL connection variables
-$hostname = 'localhost';
-$user = ini_get('mysqli.default_user');
-$pw = ini_get('mysqli.default_pw');
-$database = 'rhytxfpd_landingpage';
-
-//Connect to database
-try {
-    $db = new PDO('mysql:host=' . $hostname . ';dbname=' . $database,$user,$pw);
-} catch(PDOException $e) {
-    echo $e->getMessage();
-    die();
-}
+<?php
+require_once('sqlconn.php');
 ?>
 <!DOCTYPE html>
 <html>
@@ -32,13 +20,13 @@ try {
                 <li><a href="contact.php" id="contact">Contact</a></li>
             </ul>
         </div>
-        
+
         <div id="contentWrapper">
             <div id="contentProjects" class="pageSection" style="display:block">
                 <div id="thumbGrid">
                     <h1>Projects</h1>
                     <p>Click on an image below to view more information about each project.</p>
-                    <?php 
+                    <?php
                         $rst = $db->query('SELECT projectImgURL, projectID, projectTitle FROM projects ORDER BY projectID');
                         while ($row = $rst->fetch()) {
                             echo '<a href="projectDisp.php?id=' . $row[1] . '">';
